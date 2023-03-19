@@ -1,27 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar, Text, View } from 'react-native';
+import styled from 'styled-components/native';
+
+const Post = styled.View`
+flex-direction: row;
+padding: 15px;
+border-bottom-width: 1px;
+border-bottom-color: black;
+border-bottom-style: solid;
+`;
+
+const PostImage = styled.Image`
+width: 60px;
+height: 60px;
+border-radius: 12px;
+margin-right: 12px;
+`;
+
+const PostDetails = styled.View`
+justify-content: center;
+`;
+
+const PostTitle = styled.Text`
+font-size: 17px;
+font-weight: 700;
+`;
+
+const PostDate = styled.Text`
+font-size: 12px;
+color: red;
+margin-top: 2px;
+`;
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.testText}>Open up App.js to start working on your app!</Text>
-      <Text style={{
-        fontSize: 16,
-        color: 'green',
-      }}>123123</Text>
+    <View>
+      <Post>
+        <PostImage source={{ uri: 'https://www.appcoda.com/wp-content/uploads/2015/04/react-native.png' }} />
+        <PostDetails>
+          <PostTitle>Тестовая статья</PostTitle>
+          <PostDate>02/02/2022</PostDate>
+        </PostDetails>
+      </Post>
+      <StatusBar theme="auto" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  testText: {
-    color: 'red',
-    fontSize: 24,
-  }
-});
