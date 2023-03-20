@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { Alert, StatusBar, Text, FlatList, View, ActivityIndicator } from 'react-native';
+import { Alert, StatusBar, Text, FlatList, View, ActivityIndicator, RefreshControl } from 'react-native';
 import { Post } from './components/Post';
 
 
@@ -30,7 +30,7 @@ export default function App() {
       justifyContent: 'center',
       alignItems: 'center',
     }}>
-      <ActivityIndicator size="large"/>
+      <ActivityIndicator size="large" />
       <Text style={{
         marginTop: 15
       }}>Загрузка...</Text>
@@ -40,6 +40,7 @@ export default function App() {
   return (
     <View>
       <FlatList
+        refreshControl={<RefreshControl refreshing={isLoading} onRefresh={fetchPosts} />}
         data={items}
         renderItem={({ item }) => <Post title={item.title} imageUrl={item.imageUrl} createdAt={item.createdAt} />}
       />
