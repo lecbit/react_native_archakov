@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { Alert, StatusBar, Text, View } from 'react-native';
+import { Alert, StatusBar, Text, FlatList, View } from 'react-native';
 import { Post } from './components/Post';
 
 
@@ -20,13 +20,17 @@ export default function App() {
   }, []);
   return (
     <View>
-      {items.map((obj) => (
+      <FlatList
+        data={items}
+        renderItem={({ item }) => <Post title={item.title} imageUrl={item.imageUrl} createdAt={item.createdAt} />}
+      />
+      {/* {[...items, ...items].map((obj) => (
         <Post
           title={obj.title}
           createdAt={obj.createdAt}
           imageUrl={obj.imageUrl}
         />
-      ))}
+      ))} */}
       <StatusBar theme="auto" />
     </View>
   );
