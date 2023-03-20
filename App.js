@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { Alert, StatusBar, Text, FlatList, View, ActivityIndicator, RefreshControl } from 'react-native';
+import { Alert, StatusBar, Text, FlatList, View, ActivityIndicator, RefreshControl, TouchableOpacity } from 'react-native';
 import { Post } from './components/Post';
 
 
@@ -42,7 +42,11 @@ export default function App() {
       <FlatList
         refreshControl={<RefreshControl refreshing={isLoading} onRefresh={fetchPosts} />}
         data={items}
-        renderItem={({ item }) => <Post title={item.title} imageUrl={item.imageUrl} createdAt={item.createdAt} />}
+        renderItem={({ item }) => (
+          <TouchableOpacity>
+            <Post title={item.title} imageUrl={item.imageUrl} createdAt={item.createdAt} />
+          </TouchableOpacity>
+        )}
       />
       {/* {[...items, ...items].map((obj) => (
         <Post
