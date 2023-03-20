@@ -16,6 +16,7 @@ margin-right: 12px;
 `;
 
 const PostDetails = styled.View`
+flex: 1;
 justify-content: center;
 `;
 
