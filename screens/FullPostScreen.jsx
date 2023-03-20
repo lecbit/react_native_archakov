@@ -16,13 +16,17 @@ font-size: 18px;
 font-height: 24px;
 `;
 
-export const FullPostScreen = () => {
+export const FullPostScreen = ({ route, navigation }) => {
   const [isLoading, setLoading] = React.useState(true);
   const [data, setData] = React.useState([]);
+  const { id, title } = route.params;
 
   React.useEffect(() => {
+    navigation.setOptions({
+      title,
+    });
     axios
-      .get("https://64170d637107365a7ca34a8b.mockapi.io/Articles/1")
+      .get("https://64170d637107365a7ca34a8b.mockapi.io/Articles/" + id)
       .then(({ data }) => {
         setData(data);
       })
