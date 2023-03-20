@@ -4,7 +4,7 @@ import { Alert, Text, FlatList, View, ActivityIndicator, RefreshControl, Touchab
 import { Post } from '../components/Post';
 
 
-export const HomeScreen = () => {
+export const HomeScreen = ({navigation}) => {
     const [isLoading, setLoading] = React.useState(true);
     const [items, setItems] = React.useState([]);
 
@@ -43,7 +43,7 @@ export const HomeScreen = () => {
                 refreshControl={<RefreshControl refreshing={isLoading} onRefresh={fetchPosts} />}
                 data={items}
                 renderItem={({ item }) => (
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=> navigation.navigate('FullPost')}>
                         <Post title={item.title} imageUrl={item.imageUrl} createdAt={item.createdAt} />
                     </TouchableOpacity>
                 )}
