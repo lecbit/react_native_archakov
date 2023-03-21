@@ -13,7 +13,6 @@ margin-bottom: 20px;
 
 const PostText = styled.Text`
 font-size: 18px;
-font-height: 24px;
 `;
 
 export const FullPostScreen = ({ route, navigation }) => {

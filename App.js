@@ -1,5 +1,4 @@
 import React from 'react';
-import { StatusBar, View } from 'react-native';
 import { Navigation } from './screens/Navigation';
 
 
